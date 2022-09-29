@@ -1,8 +1,10 @@
+const emote = require("../emotes.json");
+
 module.exports = {
   run: async (client, message, args) => {
 
     message.channel.send(':ping_pong: Pong...').then(msg => {
-        msg.edit(`:ping_pong: Pong...\n> ${client.ws.ping}ms`)
+        msg.edit(`${emote.success} **|** Pong...\n> ${client.ws.ping}ms`)
     })
 
 },
@@ -10,7 +12,6 @@ module.exports = {
     name: "ping",
     aliases: [""],
     desc: "",
-    perms: [],
-    enabled: true
+    enabled: false
   }
 }; 
