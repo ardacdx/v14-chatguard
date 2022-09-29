@@ -1,3 +1,5 @@
+const reply = require("../reply");
+
 module.exports = async (Discord, client, config) => {
   
   let newSet = new Set();
@@ -18,7 +20,7 @@ module.exports = async (Discord, client, config) => {
     };
      
      if(cmd.config.enabled) {
-     return message.reply({ content: "Bu Komut deaktıf" })
+     return message.reply({ embeds: [reply("ok")] })
    } 
      
     if(cmd) {
