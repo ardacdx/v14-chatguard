@@ -14,7 +14,7 @@ const client = new Discord.Client({
   intents: Object.values(Discord.GatewayIntentBits), 
   partials: Object.values(Discord.Partials), 
   allowedMentions: {
-    parse: ["user", "roles", "everyone"] 
+    parse: ["users", "roles", "everyone"] 
   } 
 });
 

@@ -8,7 +8,7 @@ module.exports = {
 },
   config: {
     name: "ping",
-    aliases: [],
+    aliases: [""],
     desc: "",
     perms: [],
     enabled: true
