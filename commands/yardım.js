@@ -1,12 +1,13 @@
 const emote = require("../emotes.json");
 const config = require("../config.js");
 
+const reply = require("../reply");
+
 const Discord = require('discord.js');
 
 module.exports = {
   run: async (client, message, args) => {
  
-  let cmda = client.commands.filter(x => !x.config.enabled).map(x => `> • **__${config.prefix+x.config.name}__** 🠮 ${x.config.desc}`)  
   let cmd = client.commands.filter(x => !x.config.enabled).map(x => `> • **__${config.prefix+x.config.name}__** 🠮 ${x.config.desc}`)
   var page = 1;
   
@@ -61,6 +62,9 @@ module.exports = {
     const collector = message.channel.createMessageComponentCollector({ });
     
     collector.on('collect', async i => {
+      if(i.user.id !== message.author.id) return i.reply({ embeds: [reply(`${emote.danger} **|** Bu butonu yalnızca komutu kullanan kişi kullanabilir.`, msg)], ephemeral: true })
+      
+      
       if(i.customId === "sag") {
         
         if(page === 1) {
@@ -149,7 +153,7 @@ module.exports = {
   .setAuthor({ name: "Yardım menüsü | RomanBot", iconURL: client.user.displayAvatarURL({ dynamic: true })})
   .setDescription("• Yardım almak için en doğru yerdesin, bir sorunun olursa destek sunucusunda seni bekliyor olacağız.")
   .addFields({ name: `<:new1:1025306297677135923><:new2:1025306296553066576> **|** Yenilikler/Güncellemeler`, value: `> • Son güncelleme notları için [tıkla](https://discord.gg/E66J2HzraQ).` })
-  .addFields({ name: `<:global:1025305700257243176> **|** Tüm komutlar`, value: `${cmd.splice(0, 15).join("\n") || "Bu sayfada komut bulunmuyor"}` })
+  .addFields({ name: `<:global:1025305700257243176> **|** Tüm komutlar`, value: `${cmd.slice(15, 20).join("\n") || "Bu sayfada komut bulunmuyor"}` })
   .setColor("#36393F")
   .setThumbnail(`${client.user.displayAvatarURL({ dynamic: true })}`)
         
@@ -180,7 +184,7 @@ module.exports = {
   .setAuthor({ name: "Yardım menüsü | RomanBot", iconURL: client.user.displayAvatarURL({ dynamic: true })})
   .setDescription("• Yardım almak için en doğru yerdesin, bir sorunun olursa destek sunucusunda seni bekliyor olacağız.")
   .addFields({ name: `<:new1:1025306297677135923><:new2:1025306296553066576> **|** Yenilikler/Güncellemeler`, value: `> • Son güncelleme notları için [tıkla](https://discord.gg/E66J2HzraQ).` })
-  .addFields({ name: `<:global:1025305700257243176> **|** Tüm komutlar`, value: `${cmd.splice(0, 25).join("\n") || "Bu sayfada komut bulunmuyor"} ` })
+  .addFields({ name: `<:global:1025305700257243176> **|** Tüm komutlar`, value: `${cmd.slice(20, 25).join("\n") || "Bu sayfada komut bulunmuyor"} ` })
   .setColor("#36393F")
   .setThumbnail(`${client.user.displayAvatarURL({ dynamic: true })}`)
         
@@ -217,7 +221,7 @@ module.exports = {
   .setAuthor({ name: "Yardım menüsü | RomanBot", iconURL: client.user.displayAvatarURL({ dynamic: true })})
   .setDescription("• Yardım almak için en doğru yerdesin, bir sorunun olursa destek sunucusunda seni bekliyor olacağız.")
   .addFields({ name: `<:new1:1025306297677135923><:new2:1025306296553066576> **|** Yenilikler/Güncellemeler`, value: `> • Son güncelleme notları için [tıkla](https://discord.gg/E66J2HzraQ).` })
-  .addFields({ name: `<:global:1025305700257243176> **|** Tüm komutlar`, value: `${cmd.slice(0, 20).join("\n") || "Bu sayfada komut bulunmuyor"}` })
+  .addFields({ name: `<:global:1025305700257243176> **|** Tüm komutlar`, value: `${cmd.slice(15, 20).join("\n") || "Bu sayfada komut bulunmuyor"}` })
   .setColor("#36393F")
   .setThumbnail(`${client.user.displayAvatarURL({ dynamic: true })}`)
         
@@ -248,7 +252,7 @@ module.exports = {
   .setAuthor({ name: "Yardım menüsü | RomanBot", iconURL: client.user.displayAvatarURL({ dynamic: true })})
   .setDescription("• Yardım almak için en doğru yerdesin, bir sorunun olursa destek sunucusunda seni bekliyor olacağız.")
   .addFields({ name: `<:new1:1025306297677135923><:new2:1025306296553066576> **|** Yenilikler/Güncellemeler`, value: `> • Son güncelleme notları için [tıkla](https://discord.gg/E66J2HzraQ).` })
-  .addFields({ name: `<:global:1025305700257243176> **|** Tüm komutlar`, value: `${cmda.splice(0, 15).join("\n") || "Bu sayfada komut bulunmuyor"}` })
+  .addFields({ name: `<:global:1025305700257243176> **|** Tüm komutlar`, value: `${cmd.slice(10, 5).join("\n") || "Bu sayfada komut bulunmuyor"}` })
   .setColor("#36393F")
   .setThumbnail(`${client.user.displayAvatarURL({ dynamic: true })}`)
         
@@ -279,7 +283,7 @@ module.exports = {
   .setAuthor({ name: "Yardım menüsü | RomanBot", iconURL: client.user.displayAvatarURL({ dynamic: true })})
   .setDescription("• Yardım almak için en doğru yerdesin, bir sorunun olursa destek sunucusunda seni bekliyor olacağız.")
   .addFields({ name: `<:new1:1025306297677135923><:new2:1025306296553066576> **|** Yenilikler/Güncellemeler`, value: `> • Son güncelleme notları için [tıkla](https://discord.gg/E66J2HzraQ).` })
-  .addFields({ name: `<:global:1025305700257243176> **|** Tüm komutlar`, value: `${cmda.splice(0, 10).join("\n") || "Bu sayfada komut bulunmuyor"}` })
+  .addFields({ name: `<:global:1025305700257243176> **|** Tüm komutlar`, value: `${cmd.slice(10, 5).join("\n") || "Bu sayfada komut bulunmuyor"}` })
   .setColor("#36393F")
   .setThumbnail(`${client.user.displayAvatarURL({ dynamic: true })}`)
         
@@ -310,7 +314,7 @@ module.exports = {
   .setAuthor({ name: "Yardım menüsü | RomanBot", iconURL: client.user.displayAvatarURL({ dynamic: true })})
   .setDescription("• Yardım almak için en doğru yerdesin, bir sorunun olursa destek sunucusunda seni bekliyor olacağız.")
   .addFields({ name: `<:new1:1025306297677135923><:new2:1025306296553066576> **|** Yenilikler/Güncellemeler`, value: `> • Son güncelleme notları için [tıkla](https://discord.gg/E66J2HzraQ).` })
-  .addFields({ name: `<:global:1025305700257243176> **|** Tüm komutlar`, value: `${cmda.splice(0, 5).join("\n") || "Bu sayfada komut bulunmuyor"}` })
+  .addFields({ name: `<:global:1025305700257243176> **|** Tüm komutlar`, value: `${cmd.slice(5, 0).join("\n") || "Bu sayfada komut bulunmuyor"}` })
   .setColor("#36393F")
   .setThumbnail(`${client.user.displayAvatarURL({ dynamic: true })}`)
         
