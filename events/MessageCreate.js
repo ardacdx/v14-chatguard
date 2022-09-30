@@ -84,5 +84,20 @@ module.exports = async (Discord, client, config) => {
     }
     
   });
+
+  
+
+  client.on("messageCreate", async(message) => {
+    if (!db.fetch(`capsEngel_${message.guild.id}`)) return;
+    if (message.author.bot || !message.guild) return;
+    
+    if (message.member.permissions.has(Discord.PermissionsBitField.Flags.ManageMessages)) return;
+    
+    if(message.content.length >= 4 && message.content.toUpperCase()) {
+       message.delete();
+       message.channel.send({ embeds: [reply(`${emote.warning} **|** Hey ${message.author.username}, bu sunucuda büyük harfler ile konuşmak yasaklanmış.`, message)] }).then(msg => { setTimeout(() => { msg.delete() }, 5000) }); 
+    }
+    
+  });
   
 };

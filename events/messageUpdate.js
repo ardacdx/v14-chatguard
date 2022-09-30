@@ -60,4 +60,17 @@ module.exports = async (Discord, client, config) => {
     
   });
   
+  client.on("messageUpdate", async(oldMessage, newMessage) => {
+    if (!db.fetch(`capsEngel_${newMessage.guild.id}`)) return;
+    if (newMessage.author.bot || !newMessage.guild) return;
+    
+    if (newMessage.member.permissions.has(Discord.PermissionsBitField.Flags.ManageMessages)) return;
+    
+    if(newMessage.content.length >= 4 && newMessage.content.toUpperCase()) {
+       newMessage.delete();
+      newMessage.channel.send({ embeds: [reply(`${emote.warning} **|** Hey ${newMessage.author.username}, bu sunucuda büyük harfler ile konuşmak yasaklanmış.`, newMessage)] }).then(msg => { setTimeout(() => { msg.delete() }, 5000) }); 
+    }
+    
+  });
+  
 };
