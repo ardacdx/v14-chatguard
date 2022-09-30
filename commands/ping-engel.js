@@ -7,6 +7,7 @@ const Discord = require("discord.js");
 
 module.exports = {
   run: async (client, message, args, db) => {
+
     if (
       !message.member.permissions.has(
         Discord.PermissionsBitField.Flags.ManageMessages
@@ -27,7 +28,7 @@ module.exports = {
       return message.reply({
         embeds: [
           reply(
-            `${emote.danger} **|** Komutu eksik belirttin, \`${config.prefix}link-engel <aç/kapat>\` `,
+            `${emote.danger} **|** Komutu eksik belirttin, \`${config.prefix}ping-engel <aç/kapat>\` `,
             message
           ),
         ],
@@ -39,7 +40,7 @@ module.exports = {
           return message.reply({
             embeds: [
               reply(
-                `${emote.warning} **|** Link engel sistemi zaten \`aktif\` edilmiş.`,
+                `${emote.warning} **|** ping engel sistemi zaten \`aktif\` edilmiş.`,
                 message
               ),
             ],
@@ -49,7 +50,7 @@ module.exports = {
         return message.reply({
           embeds: [
             reply(
-              `${emote.success} **|** Link engel sistemi başarıyla \`aktif\` edildi.`,
+              `${emote.success} **|** ping engel sistemi başarıyla \`aktif\` edildi.`,
               message
             ),
           ],
@@ -59,17 +60,17 @@ module.exports = {
           return message.reply({
             embeds: [
               reply(
-                `${emote.warning} **|** Link engel sistemi zaten \`de-aktif\` edilmiş.`,
+                `${emote.warning} **|** ping engel sistemi zaten \`de-aktif\` edilmiş.`,
                 message
               ),
             ],
           });
 
-        db.delete(`lnkEngel_${message.guild.id}`);
+        db.delete(`pingEngel_${message.guild.id}`);
         return message.reply({
           embeds: [
             reply(
-              `${emote.success} **|** Link engel sistemi başarıyla \`de-aktif\` edildi.`,
+              `${emote.success} **|** ping engel sistemi başarıyla \`de-aktif\` edildi.`,
               message
             ),
           ],
@@ -78,18 +79,21 @@ module.exports = {
         return message.reply({
           embeds: [
             reply(
-              `${emote.danger} **|** Komutu yanlış belirttin, \`${config.prefix}link-engel <aç/kapat>\` `,
+              `${emote.danger} **|** Komutu yanlış belirttin, \`${config.prefix}ping-engel <aç/kapat>\` `,
               message
             ),
           ],
         });
       }
     }
-  },
+    
+    
+    
+},
   config: {
-    name: "link-engel",
-    aliases: ["le", "linkengel", "linkblock", "link-block"],
-    desc: "Link engel sistemini sunucunuza kurablirsiniz.",
+    name: "ping-engel",
+    aliases: ["pe", "pingengel", "pingblock", "ping-block"],
+    desc: "Ping engel sistemini sunucunuza kurablirsiniz.",
     enabled: false,
-  },
-};
+  }
+}; 

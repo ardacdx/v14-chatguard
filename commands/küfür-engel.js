@@ -8,10 +8,9 @@ const Discord = require("discord.js");
 module.exports = {
   run: async (client, message, args, db) => {
     if (
-      !message.member.permissions.has([
-        Discord.PermissionsBitField.Flags.ManageRoles,
-        Discord.PermissionsBitField.Flags.ManageMessages,
-      ])
+      !message.member.permissions.has(
+        Discord.PermissionsBitField.Flags.ManageMessages
+      )
     )
       return message.reply({
         embeds: [
