@@ -18,6 +18,9 @@ const client = new Discord.Client({
   } 
 });
 
+const invite = require('invite-module');
+invite.inviteCounter(client);
+
 /* Modüller yüklendi. */
 
 client.once("ready", () => {
