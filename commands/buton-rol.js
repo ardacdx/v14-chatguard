@@ -10,9 +10,15 @@ module.exports = {
 
    const vl = args[0];
     
-   if (!message.member.permissions.has([Discord.PermissionsBitField.Flags.ManageRoles, Discord.PermissionsBitField.Flags.ManageMessages])) message.reply({ embeds: [reply(`${emote.danger} **|**  Bu komutu kullanmak için gerekli yetkilere sahip de`, message)] }) 
+   if (!message.member.permissions.has([Discord.PermissionsBitField.Flags.ManageRoles, Discord.PermissionsBitField.Flags.ManageMessages])) return message.reply({ embeds: [reply(`${emote.danger} **|**  Bu komutu kullanmak için gerekli yetkilere sahip değilsin.`, message)] }) 
     
    if(vl === "ayarla") {
+     
+     const getRole = message.mentions.roles.first();
+     const getMessage = args.slice(0).join(" ");
+     
+     if(!getRole || !getMessage) return message.reply({ embeds: [reply(`${emote.danger} **|** Komutu eksik belirttin, \`\` `, message)] }) 
+     
      
    } else if(vl === "sıfırla") {
      
