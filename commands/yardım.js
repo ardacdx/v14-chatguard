@@ -6,7 +6,7 @@ const Discord = require('discord.js');
 module.exports = {
   run: async (client, message, args) => {
    
-  let cmd = client.commands.filter(x => !x.config.enabled).map(x => `> • **__${config.prefix+x.config.name}__** 🠮 ${x.config.desc}`).join("\n")
+  let cmd = client.commands.filter(x => !x.config.enabled).map(x => `> • **__${config.prefix+x.config.name}__** 🠮 ${x.config.desc}`)
     
   const row = new Discord.ActionRowBuilder()
 			.addComponents(
@@ -28,10 +28,10 @@ module.exports = {
 			);
 
     
-  const commandPageFırst = cmd.splice(0, 5) 
-  const commandPageSecond = cmd.splice(5, 10)
-  const commandPageThırd = cmd.splice(10, 15)
-  const commandPageFourth = cmd.splice(15, 20)
+  const commandPageFırst = cmd.splice(0, 5).join("\n") 
+  const commandPageSecond = cmd.splice(5, 10).join("\n")
+  const commandPageThırd = cmd.splice(10, 15).join("\n")
+  const commandPageFourth = cmd.splice(15, 20).join("\n")
   
   const embed = new Discord.EmbedBuilder()
   .setAuthor({ name: "Yardım menüsü | RomanBot", iconURL: client.user.displayAvatarURL({ dynamic: true })})
