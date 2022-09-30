@@ -9,7 +9,7 @@ module.exports = {
   run: async (client, message, args, db) => {
 
     if (
-      !message.member.permissions.has(
+      message.member.permissions.has(
         Discord.PermissionsBitField.Flags.ManageMessages
       )
     )
