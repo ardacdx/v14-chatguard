@@ -7,7 +7,8 @@ module.exports = {
   run: async (client, message, args) => {
    
   let cmd = client.commands.filter(x => !x.config.enabled).map(x => `> • **__${config.prefix+x.config.name}__** 🠮 ${x.config.desc}`)
-    
+  var page = 2;
+  
   const row = new Discord.ActionRowBuilder()
 			.addComponents(
 				new Discord.ButtonBuilder()
@@ -58,7 +59,43 @@ module.exports = {
   .setColor("#36393F")
   .setThumbnail(`${client.user.displayAvatarURL({ dynamic: true })}`)
   
-  message.reply({ embeds: [embed], components: [row, buttons] }).then(async(msg) ={}> )
+  message.reply({ embeds: [embed], components: [row, buttons] }).then(async(msg) => {
+    
+    const collector = message.channel.createMessageComponentCollector({ });
+    
+    collector.on('collect', async i => {
+      if(i.customId === "sag") {
+        
+        const buttons = new Discord.ActionRowBuilder()
+			.addComponents(
+				new Discord.ButtonBuilder()
+          .setCustomId('sol')
+          .setEmoji("1025357695240388661")
+					.setStyle(Discord.ButtonStyle.Success),
+        new Discord.ButtonBuilder()
+          .setCustomId('sayfa')
+          .setLabel(page+"/4")
+          .setDisabled(true)
+					.setStyle(Discord.ButtonStyle.Secondary),
+        new Discord.ButtonBuilder()
+          .setCustomId('sag')
+          .setEmoji("1025357694221172736")
+					.setStyle(Discord.ButtonStyle.Success),
+			);
+        
+        const embed = new Discord.EmbedBuilder()
+  .setAuthor({ name: "Yardım menüsü | RomanBot", iconURL: client.user.displayAvatarURL({ dynamic: true })})
+  .setDescription("• Yardım almak için en doğru yerdesin, bir sorunun olursa destek sunucusunda seni bekliyor olacağız.")
+  .addFields({ name: `<:new1:1025306297677135923><:new2:1025306296553066576> **|** Yenilikler/Güncellemeler`, value: `> • Son güncelleme notları için [tıkla](https://discord.gg/E66J2HzraQ).` })
+  .addFields({ name: `<:global:1025305700257243176> **|** Tüm komutlar`, value: `${cmd}` })
+  .setColor("#36393F")
+  .setThumbnail(`${client.user.displayAvatarURL({ dynamic: true })}`)
+        
+        i.update({ embeds: [embed], components: [row, buttons] })
+      }
+    });
+    
+  });
 
 },
   config: {
