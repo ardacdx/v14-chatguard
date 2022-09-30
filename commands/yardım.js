@@ -267,6 +267,7 @@ module.exports = {
 				new Discord.ButtonBuilder()
           .setCustomId('sol')
           .setEmoji("1025357695240388661")
+          .setDisabled(true)
 					.setStyle(Discord.ButtonStyle.Success),
         new Discord.ButtonBuilder()
           .setCustomId('sayfa')
@@ -293,6 +294,11 @@ module.exports = {
       }
       
     });
+    
+    
+    setTimeout(() => { msg.edit({ content: "❗ **|** Mesaj artık de-aktif. ", components: [] }) }, 1000 * 60)
+    
+    
     
   });
 
