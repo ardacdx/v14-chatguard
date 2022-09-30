@@ -14,7 +14,7 @@ module.exports = async (Discord, client, config) => {
     if (!db.fetch(`kfrEngel_${newMessage.guild.id}`)) return;
     if (newMessage.author.bot || !newMessage.guild) return;
     
-    if (!newMessage.member.permissions.has(Discord.PermissionsBitField.Flags.ManageMessages)) return;
+    if (newMessage.member.permissions.has(Discord.PermissionsBitField.Flags.ManageMessages)) return;
     
     let foundInText = false;
     for(var i in kfr) {
@@ -23,7 +23,7 @@ module.exports = async (Discord, client, config) => {
     
     if(foundInText) {
        newMessage.delete();
-       newMessage.channel.send({ embeds: [reply(`${emote.warning} **|** Hey ${newMessage.author.username}, bu sunucuda küfür etmek yasaklanmış.`, newMessage)] }) 
+       newMessage.channel.send({ embeds: [reply(`${emote.warning} **|** Hey ${newMessage.author.username}, bu sunucuda küfür etmek yasaklanmış.`, newMessage)] }).then(msg => { setTimeout(() => { msg.delete() }, 5000) });
     }
     
   });
