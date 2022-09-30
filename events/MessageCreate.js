@@ -67,7 +67,7 @@ module.exports = async (Discord, client, config) => {
     
     if(foundInText) {
        message.delete();
-       message.channel.send({ embeds: [reply(`${emote.warning} **|** Hey ${message.author.username}, bu sunucuda link paylaşımı yasaklanmış.`, message)] }).then(msg => { setTimeout(() => { msg.delete() }, 5000) }); 
+       message.channel.send({ embeds: [reply(`${emote.warning} **|** Hey ${message.author.username}, bu sunucuda link paylaşımı yapmak yasaklanmış.`, message)] }).then(msg => { setTimeout(() => { msg.delete() }, 5000) }); 
     }
     
   });
