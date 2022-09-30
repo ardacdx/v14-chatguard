@@ -1,8 +1,11 @@
-const reply = require("../reply");
 const db = require("croxydb");
 
 const emote = require("../emotes.json");
 const Discord = require("discord.js");
+
+function embed(desc, message, color) {
+  return new Discord.EmbedBuilder().setDescription(desc).setColor(color ? color : "#36393F")
+}
 
 module.exports = (Discord, client, config) => {
   const invite = require('invite-module');
@@ -11,12 +14,16 @@ module.exports = (Discord, client, config) => {
     client.on("memberJoin", async(member, invite, inviter, guild) => {
       if (!db.fetch(`davetLog_${member.guild.id}`)) return;
       if (member.user.bot || !member.guild) return;
+      
+      const channel = guild.channels.cache.get(db.fetch(`davetLog_${member.guild.id}`).kanal);
+      channel.send({ embeds: [embed(member.user.tag+" Sunucuya katıldı, ("+inviter.username+") Tarafından davet edildi.")] })
   })
 
   client.on("memberLeave", async(member, invite, inviter, guild) => {
       if (!db.fetch(`davetLog_${member.guild.id}`)) return;
       if (member.user.bot || !member.guild) return;
       
-      
+      const channel = guild.channels.cache.get(db.fetch(`davetLog_${member.guild.id}`).kanal);
+      channel.send({ embeds: [embed(member.user.tag+" Sunucudan ayrıldı, ("+inviter.username+") Tarafından davet edilmişti.")] })
   });
 };
