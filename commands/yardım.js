@@ -7,7 +7,7 @@ module.exports = {
   run: async (client, message, args) => {
    
   let cmd = client.commands.filter(x => !x.config.enabled).map(x => `> • **__${config.prefix+x.config.name}__** 🠮 ${x.config.desc}`)
-  var page = 2;
+  var page = 1;
   
   const row = new Discord.ActionRowBuilder()
 			.addComponents(
@@ -45,17 +45,12 @@ module.exports = {
 					.setStyle(Discord.ButtonStyle.Success),
 			);
 
-    
-  const commandPageFırst = cmd.splice(0, 5).join("\n") 
-  const commandPageSecond = cmd.splice(5, 10).join("\n")
-  const commandPageThırd = cmd.splice(10, 15).join("\n")
-  const commandPageFourth = cmd.splice(15, 20).join("\n")
   
   const embed = new Discord.EmbedBuilder()
   .setAuthor({ name: "Yardım menüsü | RomanBot", iconURL: client.user.displayAvatarURL({ dynamic: true })})
   .setDescription("• Yardım almak için en doğru yerdesin, bir sorunun olursa destek sunucusunda seni bekliyor olacağız.")
   .addFields({ name: `<:new1:1025306297677135923><:new2:1025306296553066576> **|** Yenilikler/Güncellemeler`, value: `> • Son güncelleme notları için [tıkla](https://discord.gg/E66J2HzraQ).` })
-  .addFields({ name: `<:global:1025305700257243176> **|** Tüm komutlar`, value: `${commandPageFırst} ` })
+  .addFields({ name: `<:global:1025305700257243176> **|** Tüm komutlar`, value: `${cmd.splice(0, 5).join("\n") || "Bu sayfada komut bulunmuyor"} ` })
   .setColor("#36393F")
   .setThumbnail(`${client.user.displayAvatarURL({ dynamic: true })}`)
   
@@ -66,7 +61,10 @@ module.exports = {
     collector.on('collect', async i => {
       if(i.customId === "sag") {
         
-        const buttons = new Discord.ActionRowBuilder()
+        if(page === 1) {
+          page += 1;
+          
+          const buttons = new Discord.ActionRowBuilder()
 			.addComponents(
 				new Discord.ButtonBuilder()
           .setCustomId('sol')
@@ -87,11 +85,107 @@ module.exports = {
   .setAuthor({ name: "Yardım menüsü | RomanBot", iconURL: client.user.displayAvatarURL({ dynamic: true })})
   .setDescription("• Yardım almak için en doğru yerdesin, bir sorunun olursa destek sunucusunda seni bekliyor olacağız.")
   .addFields({ name: `<:new1:1025306297677135923><:new2:1025306296553066576> **|** Yenilikler/Güncellemeler`, value: `> • Son güncelleme notları için [tıkla](https://discord.gg/E66J2HzraQ).` })
-  .addFields({ name: `<:global:1025305700257243176> **|** Tüm komutlar`, value: `${cmd}` })
+  .addFields({ name: `<:global:1025305700257243176> **|** Tüm komutlar`, value: `${cmd.splice(0, 10).join("\n") || "Bu sayfada komut bulunmuyor"} ` })
   .setColor("#36393F")
   .setThumbnail(`${client.user.displayAvatarURL({ dynamic: true })}`)
         
-        i.update({ embeds: [embed], components: [row, buttons] })
+        await msg.edit({ embeds: [embed], components: [row, buttons] })
+        }
+        
+        if(page === 2) {
+          page += 1;
+          
+          const buttons = new Discord.ActionRowBuilder()
+			.addComponents(
+				new Discord.ButtonBuilder()
+          .setCustomId('sol')
+          .setEmoji("1025357695240388661")
+					.setStyle(Discord.ButtonStyle.Success),
+        new Discord.ButtonBuilder()
+          .setCustomId('sayfa')
+          .setLabel(page+"/4")
+          .setDisabled(true)
+					.setStyle(Discord.ButtonStyle.Secondary),
+        new Discord.ButtonBuilder()
+          .setCustomId('sag')
+          .setEmoji("1025357694221172736")
+					.setStyle(Discord.ButtonStyle.Success),
+			);
+        
+        const embed = new Discord.EmbedBuilder()
+  .setAuthor({ name: "Yardım menüsü | RomanBot", iconURL: client.user.displayAvatarURL({ dynamic: true })})
+  .setDescription("• Yardım almak için en doğru yerdesin, bir sorunun olursa destek sunucusunda seni bekliyor olacağız.")
+  .addFields({ name: `<:new1:1025306297677135923><:new2:1025306296553066576> **|** Yenilikler/Güncellemeler`, value: `> • Son güncelleme notları için [tıkla](https://discord.gg/E66J2HzraQ).` })
+  .addFields({ name: `<:global:1025305700257243176> **|** Tüm komutlar`, value: `${cmd.splice(0, 15).join("\n") || "Bu sayfada komut bulunmuyor"} ` })
+  .setColor("#36393F")
+  .setThumbnail(`${client.user.displayAvatarURL({ dynamic: true })}`)
+        
+        await msg.edit({ embeds: [embed], components: [row, buttons] })
+        }
+        
+        if(page === 3) {
+          page += 1;
+          
+          const buttons = new Discord.ActionRowBuilder()
+			.addComponents(
+				new Discord.ButtonBuilder()
+          .setCustomId('sol')
+          .setEmoji("1025357695240388661")
+					.setStyle(Discord.ButtonStyle.Success),
+        new Discord.ButtonBuilder()
+          .setCustomId('sayfa')
+          .setLabel(page+"/4")
+          .setDisabled(true)
+					.setStyle(Discord.ButtonStyle.Secondary),
+        new Discord.ButtonBuilder()
+          .setCustomId('sag')
+          .setEmoji("1025357694221172736")
+					.setStyle(Discord.ButtonStyle.Success),
+			);
+        
+        const embed = new Discord.EmbedBuilder()
+  .setAuthor({ name: "Yardım menüsü | RomanBot", iconURL: client.user.displayAvatarURL({ dynamic: true })})
+  .setDescription("• Yardım almak için en doğru yerdesin, bir sorunun olursa destek sunucusunda seni bekliyor olacağız.")
+  .addFields({ name: `<:new1:1025306297677135923><:new2:1025306296553066576> **|** Yenilikler/Güncellemeler`, value: `> • Son güncelleme notları için [tıkla](https://discord.gg/E66J2HzraQ).` })
+  .addFields({ name: `<:global:1025305700257243176> **|** Tüm komutlar`, value: ` "Bu sayfada komut bulunmuyor"} ` })
+  .setColor("#36393F")
+  .setThumbnail(`${client.user.displayAvatarURL({ dynamic: true })}`)
+        
+        await  msg.edit({ embeds: [embed], components: [row, buttons] })
+        }
+        
+        if(page === 4) {
+          
+          const buttons = new Discord.ActionRowBuilder()
+			.addComponents(
+				new Discord.ButtonBuilder()
+          .setCustomId('sol')
+          .setEmoji("1025357695240388661")
+					.setStyle(Discord.ButtonStyle.Success),
+        new Discord.ButtonBuilder()
+          .setCustomId('sayfa')
+          .setLabel(page+"/4")
+          .setDisabled(true)
+					.setStyle(Discord.ButtonStyle.Secondary),
+        new Discord.ButtonBuilder()
+          .setCustomId('sag')
+          .setEmoji("1025357694221172736")
+					.setStyle(Discord.ButtonStyle.Success),
+			);
+        
+        const embed = new Discord.EmbedBuilder()
+  .setAuthor({ name: "Yardım menüsü | RomanBot", iconURL: client.user.displayAvatarURL({ dynamic: true })})
+  .setDescription("• Yardım almak için en doğru yerdesin, bir sorunun olursa destek sunucusunda seni bekliyor olacağız.")
+  .addFields({ name: `<:new1:1025306297677135923><:new2:1025306296553066576> **|** Yenilikler/Güncellemeler`, value: `> • Son güncelleme notları için [tıkla](https://discord.gg/E66J2HzraQ).` })
+  .addFields({ name: `<:global:1025305700257243176> **|** Tüm komutlar`, value: `${cmd.splice(0, 25).join("\n") || "Bu sayfada komut bulunmuyor"} ` })
+  .setColor("#36393F")
+  .setThumbnail(`${client.user.displayAvatarURL({ dynamic: true })}`)
+        
+      await msg.edit({ embeds: [embed], components: [row, buttons] })
+        }
+        
+        
+
       }
     });
     
