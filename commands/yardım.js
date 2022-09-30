@@ -26,6 +26,23 @@ module.exports = {
           .setURL("https://top.gg/tr/bot/996343874509353122")
 					.setStyle(Discord.ButtonStyle.Link),
 			);
+    
+    const buttons = new Discord.ActionRowBuilder()
+			.addComponents(
+				new Discord.ButtonBuilder()
+          .setCustomId('sol')
+          .setEmoji("1025357695240388661")
+					.setStyle(Discord.ButtonStyle.Success),
+        new Discord.ButtonBuilder()
+          .setCustomId('sayfa')
+          .setLabel("1/4")
+          .setDisabled(true)
+					.setStyle(Discord.ButtonStyle.Secondary),
+        new Discord.ButtonBuilder()
+          .setCustomId('sag')
+          .setEmoji("1025357694221172736")
+					.setStyle(Discord.ButtonStyle.Success),
+			);
 
     
   const commandPageFırst = cmd.splice(0, 5).join("\n") 
@@ -41,7 +58,7 @@ module.exports = {
   .setColor("#36393F")
   .setThumbnail(`${client.user.displayAvatarURL({ dynamic: true })}`)
   
-  message.reply({ embeds: [embed], components: [row] })
+  message.reply({ embeds: [embed], components: [row, buttons] }).then(async(msg) ={}> )
 
 },
   config: {
