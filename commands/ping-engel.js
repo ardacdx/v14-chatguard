@@ -36,31 +36,31 @@ module.exports = {
 
     if (getActive) {
       if (getActive === "aç") {
-        if (db.fetch(`lnkEngel_${message.guild.id}`))
+        if (db.fetch(`pingEngel_${message.guild.id}`))
           return message.reply({
             embeds: [
               reply(
-                `${emote.warning} **|** ping engel sistemi zaten \`aktif\` edilmiş.`,
+                `${emote.warning} **|** Ping engel sistemi zaten \`aktif\` edilmiş.`,
                 message
               ),
             ],
           });
 
-        db.set(`lnkEngel_${message.guild.id}`, true);
+        db.set(`pingEngel_${message.guild.id}`, true);
         return message.reply({
           embeds: [
             reply(
-              `${emote.success} **|** ping engel sistemi başarıyla \`aktif\` edildi.`,
+              `${emote.success} **|** Ping engel sistemi başarıyla \`aktif\` edildi.`,
               message
             ),
           ],
         });
       } else if (getActive === "kapat") {
-        if (!db.fetch(`lnkEngel_${message.guild.id}`))
+        if (!db.fetch(`pingEngel_${message.guild.id}`))
           return message.reply({
             embeds: [
               reply(
-                `${emote.warning} **|** ping engel sistemi zaten \`de-aktif\` edilmiş.`,
+                `${emote.warning} **|** Ping engel sistemi zaten \`de-aktif\` edilmiş.`,
                 message
               ),
             ],
@@ -70,7 +70,7 @@ module.exports = {
         return message.reply({
           embeds: [
             reply(
-              `${emote.success} **|** ping engel sistemi başarıyla \`de-aktif\` edildi.`,
+              `${emote.success} **|** Ping engel sistemi başarıyla \`de-aktif\` edildi.`,
               message
             ),
           ],

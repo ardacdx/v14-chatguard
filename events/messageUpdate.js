@@ -47,4 +47,17 @@ module.exports = async (Discord, client, config) => {
     
   });
   
+   client.on("messageUpdate", async(oldMessage, newMessage) => {
+    if (!db.fetch(`pingEngel_${newMessage.guild.id}`)) return;
+    if (newMessage.author.bot || !newMessage.guild) return;
+    
+    if (newMessage.member.permissions.has(Discord.PermissionsBitField.Flags.ManageMessages)) return;
+    
+    if(newMessage.mentions.everyone) {
+      newMessage.delete();
+       newMessage.channel.send({ embeds: [reply(`${emote.warning} **|** Hey ${newMessage.author.username}, bu sunucuda **@everyone** ve **@here** etiketleri yasaklanmış.`, newMessage)] }).then(msg => { setTimeout(() => { msg.delete() }, 5000) }); 
+    }
+    
+  });
+  
 };
