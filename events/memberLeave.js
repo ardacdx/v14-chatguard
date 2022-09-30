@@ -15,6 +15,6 @@ module.exports = (Discord, client, config) => {
       if (member.user.bot || !member.guild) return;
       
       const channel = guild.channels.cache.get(db.fetch(`davetLog_${member.guild.id}`).kanal);
-      return channel.send({ embeds: [embed(member.user.tag+" Sunucudan ayrıldı, ("+inviter.tag+") Tarafından davet edilmişti.")] })
+      return channel.send({ embeds: [embed("`"+member.user.tag+"` Sunucudan ayrıldı, (`"+inviter.tag+"`) Tarafından davet edilmişti.")] })
   });
 };
