@@ -52,7 +52,7 @@ module.exports = {
   .setAuthor({ name: "Yardım menüsü | RomanBot", iconURL: client.user.displayAvatarURL({ dynamic: true })})
   .setDescription("• Yardım almak için en doğru yerdesin, bir sorunun olursa destek sunucusunda seni bekliyor olacağız.")
   .addFields({ name: `<:new1:1025306297677135923><:new2:1025306296553066576> **|** Yenilikler/Güncellemeler`, value: `> • Son güncelleme notları için [tıkla](https://discord.gg/E66J2HzraQ).` })
-  .addFields({ name: `<:global:1025305700257243176> **|** Tüm komutlar`, value: `${cmd.splice(0, 5).join("\n") || "Bu sayfada komut bulunmuyor"} ` })
+  .addFields({ name: `<:global:1025305700257243176> **|** Tüm komutlar`, value: `${cmd.slice(0, 5).join("\n") || "Bu sayfada komut bulunmuyor"} ` })
   .setColor("#36393F")
   .setThumbnail(`${client.user.displayAvatarURL({ dynamic: true })}`)
   
@@ -87,7 +87,7 @@ module.exports = {
   .setAuthor({ name: "Yardım menüsü | RomanBot", iconURL: client.user.displayAvatarURL({ dynamic: true })})
   .setDescription("• Yardım almak için en doğru yerdesin, bir sorunun olursa destek sunucusunda seni bekliyor olacağız.")
   .addFields({ name: `<:new1:1025306297677135923><:new2:1025306296553066576> **|** Yenilikler/Güncellemeler`, value: `> • Son güncelleme notları için [tıkla](https://discord.gg/E66J2HzraQ).` })
-  .addFields({ name: `<:global:1025305700257243176> **|** Tüm komutlar`, value: `${cmd.splice(0, 10).join("\n") || "Bu sayfada komut bulunmuyor"} ` })
+  .addFields({ name: `<:global:1025305700257243176> **|** Tüm komutlar`, value: `${cmd.slice(5, 10).join("\n") || "Bu sayfada komut bulunmuyor"} ` })
   .setColor("#36393F")
   .setThumbnail(`${client.user.displayAvatarURL({ dynamic: true })}`)
         
@@ -118,7 +118,7 @@ module.exports = {
   .setAuthor({ name: "Yardım menüsü | RomanBot", iconURL: client.user.displayAvatarURL({ dynamic: true })})
   .setDescription("• Yardım almak için en doğru yerdesin, bir sorunun olursa destek sunucusunda seni bekliyor olacağız.")
   .addFields({ name: `<:new1:1025306297677135923><:new2:1025306296553066576> **|** Yenilikler/Güncellemeler`, value: `> • Son güncelleme notları için [tıkla](https://discord.gg/E66J2HzraQ).` })
-  .addFields({ name: `<:global:1025305700257243176> **|** Tüm komutlar`, value: `${cmd.splice(0, 15).join("\n") || "Bu sayfada komut bulunmuyor"} ` })
+  .addFields({ name: `<:global:1025305700257243176> **|** Tüm komutlar`, value: `${cmd.slice(10, 15).join("\n") || "Bu sayfada komut bulunmuyor"} ` })
   .setColor("#36393F")
   .setThumbnail(`${client.user.displayAvatarURL({ dynamic: true })}`)
         
@@ -217,7 +217,7 @@ module.exports = {
   .setAuthor({ name: "Yardım menüsü | RomanBot", iconURL: client.user.displayAvatarURL({ dynamic: true })})
   .setDescription("• Yardım almak için en doğru yerdesin, bir sorunun olursa destek sunucusunda seni bekliyor olacağız.")
   .addFields({ name: `<:new1:1025306297677135923><:new2:1025306296553066576> **|** Yenilikler/Güncellemeler`, value: `> • Son güncelleme notları için [tıkla](https://discord.gg/E66J2HzraQ).` })
-  .addFields({ name: `<:global:1025305700257243176> **|** Tüm komutlar`, value: `${cmda.splice(0, 20).join("\n") || "Bu sayfada komut bulunmuyor"}` })
+  .addFields({ name: `<:global:1025305700257243176> **|** Tüm komutlar`, value: `${cmd.slice(0, 20).join("\n") || "Bu sayfada komut bulunmuyor"}` })
   .setColor("#36393F")
   .setThumbnail(`${client.user.displayAvatarURL({ dynamic: true })}`)
         
