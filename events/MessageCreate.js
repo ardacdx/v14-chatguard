@@ -1,4 +1,5 @@
 const reply = require("../reply");
+const db = require("croxydb");
 
 module.exports = async (Discord, client, config) => {
   
@@ -24,7 +25,7 @@ module.exports = async (Discord, client, config) => {
    } 
      
     if(cmd) {
-       return cmd.run(client, message, args);
+       return cmd.run(client, message, args, db);
       }; 
      
    });
