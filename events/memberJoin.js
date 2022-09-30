@@ -9,13 +9,12 @@ function embed(desc, message, color) {
 
 module.exports = (Discord, client, config) => {
   const invite = require('invite-module');
-  invite.inviteCounter(client);
   
     client.on("memberJoin", async(member, invite, inviter, guild) => {
       if (!db.fetch(`davetLog_${member.guild.id}`)) return;
       if (member.user.bot || !member.guild) return;
       
       const channel = guild.channels.cache.get(db.fetch(`davetLog_${member.guild.id}`).kanal);
-     return channel.send({ embeds: [embed("<@"+member.id+"> Sunucuya katıldı, ("+inviter.username+") Tarafından davet edildi.")] })
-  })
+     return channel.send({ embeds: [embed("<@"+member.id+"> Sunucuya katıldı, ("+inviter.tag+") Tarafından davet edildi.")] })
+  });
 };
