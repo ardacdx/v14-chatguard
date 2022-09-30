@@ -11,7 +11,7 @@ module.exports = {
   config: {
     name: "ping",
     aliases: [""],
-    desc: "",
+    desc: "RomanBot'un ping değerlerini gösterir.",
     enabled: false
   }
 }; 
