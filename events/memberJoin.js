@@ -16,14 +16,6 @@ module.exports = (Discord, client, config) => {
       if (member.user.bot || !member.guild) return;
       
       const channel = guild.channels.cache.get(db.fetch(`davetLog_${member.guild.id}`).kanal);
-      channel.send({ embeds: [embed(member.user.tag+" Sunucuya katıldı, ("+inviter.username+") Tarafından davet edildi.")] })
+     return channel.send({ embeds: [embed("<@"+member.id+"> Sunucuya katıldı, ("+inviter.username+") Tarafından davet edildi.")] })
   })
-
-  client.on("memberLeave", async(member, invite, inviter, guild) => {
-      if (!db.fetch(`davetLog_${member.guild.id}`)) return;
-      if (member.user.bot || !member.guild) return;
-      
-      const channel = guild.channels.cache.get(db.fetch(`davetLog_${member.guild.id}`).kanal);
-      channel.send({ embeds: [embed(member.user.tag+" Sunucudan ayrıldı, ("+inviter.username+") Tarafından davet edilmişti.")] })
-  });
 };
