@@ -1,14 +1,17 @@
 const emote = require("../emotes.json");
 const config = require("../config.js");
 
+const Discord = require('discord.js');
+
 module.exports = {
   run: async (client, message, args) => {
-
-  let filteredCmds = config.filteredCmds;   
-  let commands = client.commands.map(x => `• **__${x.config.name}__** 🠮 ${x.config.desc}`).jo
-  let commandsLength = commands.length.toString();  
+   
+  let commands = client.commands.filter(x => !x.config.enabled).map(x => `• **__${config.prefix+x.config.name}__** 🠮 ${x.config.desc}`).join("\n")
     
-   message.reply({ content:  `${commands}`})  
+  const embed = new Discord.EmbedBuilder()
+  .setAuthor({ name: "Yardım menüsü | RomanBot", iconURL: client.user.displayAvatarURL({ dynamic: true })})
+  .setDescription(commands)
+  .setThumbn
 
 },
   config: {
