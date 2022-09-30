@@ -5,6 +5,7 @@ const emote = require("../emotes.json");
 const Discord = require("discord.js");
 
 const kfr = require("../jsons/kfr.json");
+const lnks = require("../jsons/lnks.json");
 
 module.exports = async (Discord, client, config) => {
   
@@ -49,6 +50,24 @@ module.exports = async (Discord, client, config) => {
     if(foundInText) {
        message.delete();
        message.channel.send({ embeds: [reply(`${emote.warning} **|** Hey ${message.author.username}, bu sunucuda küfür etmek yasaklanmış.`, message)] }).then(msg => { setTimeout(() => { msg.delete() }, 5000) }); 
+    }
+    
+  });
+  
+  client.on("messageCreate", async(message) => {
+    if (!db.fetch(`lnkEngel_${message.guild.id}`)) return;
+    if (message.author.bot || !message.guild) return;
+    
+    if (message.member.permissions.has(Discord.PermissionsBitField.Flags.ManageMessages)) return;
+    
+    let foundInText = false;
+    for(var i in lnks) {
+      if (message.content.toLowerCase().includes(lnks[i].toLowerCase())) foundInText = true;
+    }
+    
+    if(foundInText) {
+       message.delete();
+       message.channel.send({ embeds: [reply(`${emote.warning} **|** Hey ${message.author.username}, bu sunucuda link paylaşımı yasaklanmış.`, message)] }).then(msg => { setTimeout(() => { msg.delete() }, 5000) }); 
     }
     
   });
