@@ -1,6 +1,10 @@
 const reply = require("../reply");
 const db = require("croxydb");
 
+const Discord = require("discord.js");
+
+const kfr = require("../jsons/kfr.json");
+
 module.exports = async (Discord, client, config) => {
   
   let newSet = new Set();
@@ -29,5 +33,23 @@ module.exports = async (Discord, client, config) => {
       }; 
      
    });
+  
+  client.on("messageCreate", async(message) => {
+    if (!db.fetch(`kfrEngel_${message.guild.id}`)) return;
+    if (message.author.bot || !message.guild) return;
+    
+    if (!message.member.permissions.has(Discord.PermissionsBitField.Flags.ManageMessages)) return;
+    
+    let foundInText = false;
+    for(var i in kfr) {
+      if (message.content.toLowerCase().includes(kfr[i].toLowerCase())) foundInText = true;
+    }
+    
+    if(foundInText) {
+       message.delete();
+       message.channel.send({ embeds }) 
+    }
+    
+  });
   
 };

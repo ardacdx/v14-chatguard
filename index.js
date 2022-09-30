@@ -64,6 +64,7 @@ client.reload = command => {
 
 /* Komutları yeniler. */
 
+/* Discorda giriş yapar. */
 client.login(config.token).then(() => {
   console.log('(!) Token doğrulandı, giriş yapılıyor...');
 }).catch(() => {
