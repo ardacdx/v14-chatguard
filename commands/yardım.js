@@ -6,7 +6,7 @@ const Discord = require('discord.js');
 module.exports = {
   run: async (client, message, args) => {
    
-  let commands = client.commands.filter(x => !x.config.enabled).map(x => `> • **__${config.prefix+x.config.name}__** 🠮 ${x.config.desc}`).join("\n")
+  let cmd = client.commands.filter(x => !x.config.enabled).map(x => `> • **__${config.prefix+x.config.name}__** 🠮 ${x.config.desc}`).join("\n")
     
   const row = new Discord.ActionRowBuilder()
 			.addComponents(
@@ -28,13 +28,16 @@ module.exports = {
 			);
 
     
-  const   
+  const commandPageFırst = cmd.splice(0, 5) 
+  const commandPageSecond = cmd.splice(5, 10)
+  const commandPageThırd = cmd.splice(10, 15)
+  const commandPageFourth = cmd.splice(15, 20)
   
   const embed = new Discord.EmbedBuilder()
   .setAuthor({ name: "Yardım menüsü | RomanBot", iconURL: client.user.displayAvatarURL({ dynamic: true })})
   .setDescription("• Yardım almak için en doğru yerdesin, bir sorunun olursa destek sunucusunda seni bekliyor olacağız.")
   .addFields({ name: `<:new1:1025306297677135923><:new2:1025306296553066576> **|** Yenilikler/Güncellemeler`, value: `> • Son güncelleme notları için [tıkla](https://discord.gg/E66J2HzraQ).` })
-  .addFields({ name: `<:global:1025305700257243176> **|** Tüm komutlar`, value: `${commands} ` })
+  .addFields({ name: `<:global:1025305700257243176> **|** Tüm komutlar`, value: `${commandPageFırst} ` })
   .setColor("#36393F")
   .setThumbnail(`${client.user.displayAvatarURL({ dynamic: true })}`)
   
@@ -43,10 +46,9 @@ module.exports = {
 },
   config: {
     name: "yardım",
-    aliases: [""],
+    aliases: ["help"],
     desc: "RomanBot'un komutlarını gösterir.",
     enabled: false
   }
 }; 
 
-// https://top.gg/tr/bot/996343874509353122
