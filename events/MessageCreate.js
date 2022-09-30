@@ -1,6 +1,7 @@
 const reply = require("../reply");
 const db = require("croxydb");
 
+const emote = require("../emotes.json");
 const Discord = require("discord.js");
 
 const kfr = require("../jsons/kfr.json");
@@ -47,7 +48,7 @@ module.exports = async (Discord, client, config) => {
     
     if(foundInText) {
        message.delete();
-       message.channel.send({ embeds }) 
+       message.channel.send({ embeds: [reply(`${emote.warning} **|** Hey ${message.author.username}`, message)] }) 
     }
     
   });
