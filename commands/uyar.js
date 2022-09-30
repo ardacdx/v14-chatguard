@@ -23,11 +23,12 @@ module.exports = {
       });
    
     const mentionUser = message.mentions.users.first();
+    
       if (!mentionUser)
         return message.reply({
           embeds: [
             reply(
-              `${emote.danger} **|** Komutu eksik belirttin, \`${config.prefix}uyar #kullanıcı\` `,
+              `${emote.danger} **|** Komutu eksik belirttin, \`${config.prefix}uyar @kullanıcı\` `,
               message
             ),
           ],
@@ -35,10 +36,10 @@ module.exports = {
     
     try {
       
-      message.reply({ embeds: [reply(`${emote.success} **|** \`${mentionUser.tag}\` başarıyla uyarıldı.`)] })
+      message.reply({ embeds: [reply(`${emote.success} **|** \`${mentionUser.tag}\` başarıyla uyarıldı.`, message)] })
       
     } catch {
-      
+      console.log("A")
     }
 
 },
