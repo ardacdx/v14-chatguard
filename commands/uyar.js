@@ -23,7 +23,7 @@ module.exports = {
       });
    
     const mentionUser = message.mentions.users.first();
-    const getReason = args.slice(0).join(" ") || "Bulunmuyor."
+    const getReason = args.slice(1).join(" ") || "Bulunmuyor."
     
       if (!mentionUser)
         return message.reply({
@@ -34,14 +34,12 @@ module.exports = {
             ),
           ],
         });
-    
-    try {
       
       const buttons = new Discord.ActionRowBuilder()
 			.addComponents(
 				new Discord.ButtonBuilder()
           .setCustomId('uyaru')
-          .set(`Uyaran: ${message.author.tag}`)
+          .setLabel(`Uyaran: ${message.author.tag}`)
           .setEmoji("1025107658874830870")
           .setDisabled(true)
 					.setStyle(Discord.ButtonStyle.Secondary),
@@ -53,12 +51,12 @@ module.exports = {
       .setColor("#36393F")
       .setThumbnail(`${message.author.displayAvatarURL({ dynamic: true })}`)
       
-      message.reply({ embeds: [reply(`${emote.success} **|** \`${mentionUser.tag}\` başarıyla uyarıldı.`, message)] })
-      mentionUser.send({ embeds: [embed] })
-      
-    } catch {
-      console.log("A")
-    }
+      mentionUser.send({ embeds: [embed], components: [buttons] }).then(success => {
+      return message.reply({ embeds: [reply(`${emote.success} **|** \`${mentionUser.tag}\` başarıyla uyarıldı.`, message)] })  
+      }).catch(error => {
+      return message.reply({ embeds: [reply(`${emote.danger} **|** \`${mentionUser.tag}\` kullanıcısının direkt mesajları kapalı.`, message)] })
+      }) 
+
 
 },
   config: {
@@ -68,3 +66,7 @@ module.exports = {
     enabled: false
   }
 }; 
+
+/* 
+
+*/
