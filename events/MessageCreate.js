@@ -37,8 +37,8 @@ module.exports = async (Discord, client, config) => {
    });
   
   client.on("messageCreate", async(message) => {
-    if (!db.fetch(`kfrEngel_${message.guild.id}`)) return;
     if (message.author.bot || !message.guild) return;
+    if (!db.fetch(`kfrEngel_${message.guild.id}`)) return;
     
     if (message.member.permissions.has(Discord.PermissionsBitField.Flags.ManageMessages)) return;
     
@@ -55,8 +55,8 @@ module.exports = async (Discord, client, config) => {
   });
   
   client.on("messageCreate", async(message) => {
-    if (!db.fetch(`lnkEngel_${message.guild.id}`)) return;
     if (message.author.bot || !message.guild) return;
+    if (!db.fetch(`lnkEngel_${message.guild.id}`)) return;
     
     if (message.member.permissions.has(Discord.PermissionsBitField.Flags.ManageMessages)) return;
     
@@ -73,8 +73,8 @@ module.exports = async (Discord, client, config) => {
   });
   
   client.on("messageCreate", async(message) => {
-    if (!db.fetch(`pingEngel_${message.guild.id}`)) return;
     if (message.author.bot || !message.guild) return;
+    if (!db.fetch(`pingEngel_${message.guild.id}`)) return;
     
     if (message.member.permissions.has(Discord.PermissionsBitField.Flags.ManageMessages)) return;
     
@@ -88,8 +88,8 @@ module.exports = async (Discord, client, config) => {
   
 
   client.on("messageCreate", async(message) => {
-    if (!db.fetch(`capsEngel_${message.guild.id}`)) return;
     if (message.author.bot || !message.guild) return;
+    if (!db.fetch(`capsEngel_${message.guild.id}`)) return;
     
     if (message.member.permissions.has(Discord.PermissionsBitField.Flags.ManageMessages)) return;
     

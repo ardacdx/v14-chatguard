@@ -12,8 +12,8 @@ module.exports = async (Discord, client, config) => {
   let newSet = new Set();
   
   client.on("messageUpdate", async(oldMessage, newMessage) => {
-    if (!db.fetch(`kfrEngel_${newMessage.guild.id}`)) return;
     if (newMessage.author.bot || !newMessage.guild) return;
+    if (!db.fetch(`kfrEngel_${newMessage.guild.id}`)) return;
     
     if (newMessage.member.permissions.has(Discord.PermissionsBitField.Flags.ManageMessages)) return;
     
@@ -30,8 +30,8 @@ module.exports = async (Discord, client, config) => {
   });
   
   client.on("messageUpdate", async(oldMessage, newMessage) => {
-    if (!db.fetch(`lnkEngel_${newMessage.guild.id}`)) return;
     if (newMessage.author.bot || !newMessage.guild) return;
+    if (!db.fetch(`lnkEngel_${newMessage.guild.id}`)) return;
     
     if (newMessage.member.permissions.has(Discord.PermissionsBitField.Flags.ManageMessages)) return;
     
@@ -48,8 +48,8 @@ module.exports = async (Discord, client, config) => {
   });
   
    client.on("messageUpdate", async(oldMessage, newMessage) => {
-    if (!db.fetch(`pingEngel_${newMessage.guild.id}`)) return;
     if (newMessage.author.bot || !newMessage.guild) return;
+    if (!db.fetch(`pingEngel_${newMessage.guild.id}`)) return;
     
     if (newMessage.member.permissions.has(Discord.PermissionsBitField.Flags.ManageMessages)) return;
     
@@ -61,8 +61,8 @@ module.exports = async (Discord, client, config) => {
   });
   
   client.on("messageUpdate", async(oldMessage, newMessage) => {
-    if (!db.fetch(`capsEngel_${newMessage.guild.id}`)) return;
     if (newMessage.author.bot || !newMessage.guild) return;
+    if (!db.fetch(`capsEngel_${newMessage.guild.id}`)) return;
     
     if (newMessage.member.permissions.has(Discord.PermissionsBitField.Flags.ManageMessages)) return;
     
