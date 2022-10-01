@@ -26,7 +26,7 @@ module.exports = {
   
   channel.delete()
   channel.clone().then(a => { 
-     a.send({ embeds: [reply(`${emote.success} **|** Kanal başarıyla sıfırlandı.`, mess)] })
+     a.send({ embeds: [reply(`${emote.success} **|** Kanal başarıyla sıfırlandı.`, message)] })
   })  
     
 },
